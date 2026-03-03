@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="index.css">
+  <title>Repetition</title>
+</head>
+
+<body>
+
+  <main>
+
+    <section id="homeView">
+      <div class="homeView-title">
+        <h2>Repetition</h2>
+      </div>
+
+
+      <div class="topic-list">
+        <button data-topic="all">All Cards</button>
+
+        <div class="divider"></div>
+
+        <button data-topic="corporate-management">Corporate Management</button>
+        <button data-topic="corporate-reporting">Corporate Reporting</button>
+        <button data-topic="financial-accounting">Financial Accounting</button>
+        <button data-topic="management-accounting">Management Accounting</button>
+        <button data-topic="bookkeeping">Bookkeeping</button>
+        <button data-topic="auditing">Auditing</button>
+        <button data-topic="taxation">Taxation</button>
+      </div>
+    </section>
+
+    <!-- CARD SESSION (REUSED FOR ALL TOPICS) -->
+    <section id="sessionView" hidden>
+
+      <!-- HEADER -->
+      <header class="session-header">
+        <div class="session-header-left">
+          <button id="backButton">← Home</button>
+        </div>
+        <div class="session-header-right">
+          <h2 id="topicTitle"></h2>
+        </div>
+      </header>
+
+      <!-- PROGRESS -->
+      <div class="progress-container">
+        <span id="progressText"></span>
+        <div class="progress-bar">
+          <div id="progressFill"></div>
+        </div>
+      </div>
+
+      <!-- CARD -->
+      <div class="card">
+        <div class="question" id="questionText"></div>
+
+        <div class="answers">
+          <button class="answer"></button>
+          <button class="answer"></button>
+          <button class="answer"></button>
+          <button class="answer"></button>
+        </div>
+      </div>
+
+      <!-- FEEDBACK -->
+      <div class="feedback" id="feedback" hidden>
+        <p id="feedbackText"></p>
+        <button id="nextButton">Next</button>
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+
+  <script>
+    // Register service worker for PWA functionality
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('sw.js')
+          .then(registration => {
+            console.log('Service Worker registered:', registration);
+          })
+          .catch(error => {
+            console.log('Service Worker registration failed:', error);
+          });
+      });
+    }
+  </script>
+
+</body>
+
+</html>
